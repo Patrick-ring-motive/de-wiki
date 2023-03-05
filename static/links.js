@@ -28,11 +28,11 @@ const src_list_length=src_list.length;
     src_list[i].src=src_list[i].src.replaceAll(hostTarget,hostProxy)  
   }catch(e){continue;}}
 
-const lazy_images=document.querySelectorAll('.lazy-image-placeholder');
+const lazy_images=document.querySelectorAll('.lazy-image-placeholder[data-src]');
   const lazy_images_length=lazy_images.length;
     for(let i=0;i<lazy_images_length;i++){try{
 lazy_images[i].style.backgroundImage='url("'+lazy_images[i].getAttribute('data-src')+'")'; 
-      lazy_images[i].className='';
+      lazy_images[i].removeAttribute('data-src');
   }catch(e){continue;}}
 },100);
   
