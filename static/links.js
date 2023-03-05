@@ -34,7 +34,21 @@ const lazy_images=document.querySelectorAll('.lazy-image-placeholder[data-src]')
 lazy_images[i].style.backgroundImage='url("'+lazy_images[i].getAttribute('data-src')+'")'; 
       lazy_images[i].removeAttribute('data-src');
   }catch(e){continue;}}
+
+
+
+  const collapse=document.querySelectorAll('[class*="open-block open-block"]');
+  const collapse_length=collapse.length;
+      for(let i=0;i<collapse_length;i++){try{
+collapse[i].setAttribute('class',collapse[i].getAttribute('class').replaceAll('open-block',''));
+  }catch(e){continue;}}
+
+  
 },100);
+
+
+
+  
   
 
   
