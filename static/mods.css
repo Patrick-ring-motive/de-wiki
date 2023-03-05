@@ -30,7 +30,7 @@ div[class="eg-machine-translation-page-status missing"],
 }
 
 BODY-FIX,
-body,
+body
 {
 margin-top: 0px !important;
 }
