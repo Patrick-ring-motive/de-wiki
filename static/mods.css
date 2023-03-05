@@ -1,5 +1,4 @@
 CAPITALIZER,
-[title="Google translate navigation"],
 [class*="Vorlage_Überschriftensimulation"],
 .mw-page-title-main,
 div[style*="font-size:130%"]
@@ -7,7 +6,8 @@ div[style*="font-size:130%"]
   text-transform: capitalize;
 }
 
-HIDDEN-FORCED
+HIDDEN-FORCED,
+[title="Google translate navigation"]
 {
    display: none !important;
    visibility: hidden !important;
