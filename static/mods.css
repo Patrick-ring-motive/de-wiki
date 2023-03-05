@@ -26,3 +26,9 @@ div[class="eg-machine-translation-page-status missing"],
    position: absolute !important;
    z-index: -99 !important;
 }
+
+BODY-FIX,
+body,
+{
+margin-top: 0px !important;
+}
