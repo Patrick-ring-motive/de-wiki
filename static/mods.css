@@ -10,7 +10,8 @@ h6,
 div[style*="font-size:130%"],
 .toc,
 [class*="menu__item"],
-[summary="Taxobox"]
+[summary="Taxobox"],
+.tagline
 {
   text-transform: capitalize !important;
 }
