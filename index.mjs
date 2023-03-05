@@ -21,13 +21,7 @@ async function onRequest(req, res) {
     return res.end();
   }
 
-  if (path.indexOf(translator) == -1) {
-    /* if not a text response then redirect straight to target */
-    res.setHeader('location', 'https://' + hostProxy + path.split('?')[0] + translator);
-    res.statusCode = 302;
-    res.end();
 
-  }
 
   req.headers.host = hostTarget;
   req.headers.referer = hostTarget;
@@ -72,6 +66,14 @@ async function onRequest(req, res) {
     let ct = response.headers.get('content-type');
 
     if ((ct) && (ct.indexOf('image') == -1) && (ct.indexOf('video') == -1) && (ct.indexOf('audio') == -1)) {
+
+        if (path.indexOf(translator) == -1) {
+    /* if not a text response then redirect straight to target */
+    res.setHeader('location', 'https://' + hostProxy + path.split('?')[0] + translator);
+    res.statusCode = 302;
+    res.end();
+
+  }
 
       /* Copy over target response and return */
       let resBody = await response.text();
