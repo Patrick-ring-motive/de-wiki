@@ -9,7 +9,8 @@ h6,
 .mw-page-title-main,
 div[style*="font-size:130%"],
 .toc,
-[class*="menu__item"]
+[class*="menu__item"],
+[summary="Taxobox"]
 {
   text-transform: capitalize !important;
 }
@@ -19,8 +20,7 @@ HIDDEN-FORCED,
 div[class="eg-machine-translation-page-status missing"],
 .eg-machine-translation-banner,
 .banner-container,
-.page-actions-menu,
-[summary="Taxobox"]
+.page-actions-menu
 {
    display: none !important;
    visibility: hidden !important;
