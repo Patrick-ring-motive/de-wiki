@@ -1,4 +1,7 @@
-.mw-page-title-main
+CAPITALIZER,
+[title="Google translate navigation"],
+.mw-page-title-main,
+div[style="font-family: sans-serif; font-size:130%; margin-bottom:9px; margin-top:12px;"]
 {
   text-transform: capitalize;
 }
