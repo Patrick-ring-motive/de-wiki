@@ -1,0 +1,16 @@
+.mw-page-title-main
+{
+  text-transform: capitalize;
+}
+
+HIDDEN-FORCED
+{
+   display: none !important;
+   visibility: hidden !important;
+   opacity: 0 !important;
+   max-height: 0px !important;
+   height: 0px !important;
+   transform: scale(0,0) !important;
+   position: absolute !important;
+   z-index: -99 !important;
+}

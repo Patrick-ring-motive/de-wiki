@@ -52,8 +52,12 @@ async function onRequest(req, res) {
     /* finish copying over the other parts of the request */
 
     /* fetch from your desired target */
-    let response = await fetch('https://' + hostTarget + req.url, options);
-
+    let response = new Response(); 
+      try{
+      response = await fetch('https://' + hostTarget + req.url, options);
+      }catch(e){
+      response = await fetch('https://' + hostWiki + req.url, options);
+      }
     /* copy over response headers 
 
     
@@ -82,6 +86,8 @@ async function onRequest(req, res) {
 
       resBody = resBody.replaceAll('hostTarget', 'hostProxy');
 
+      resBody = resBody.replace('<head>','<head><script src="https://patrick-ring-motive.github.io/de-wiki/static/links.js"></script><link rel="stylesheet" href="https://patrick-ring-motive.github.io/de-wiki/static/mods.js">');
+      
       res.end(resBody);
 
 
