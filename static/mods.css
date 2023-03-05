@@ -20,6 +20,7 @@ div[style*="font-size:130%"],
 }
 
 HIDDEN-FORCED,
+[class*="open-block open-block"],
 [title="Google translate navigation"],
 div[class="eg-machine-translation-page-status missing"],
 .eg-machine-translation-banner,
