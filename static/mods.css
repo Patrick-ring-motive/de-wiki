@@ -11,7 +11,8 @@ div[style*="font-size:130%"],
 .toc,
 [class*="menu__item"],
 [summary="Taxobox"],
-.tagline
+.tagline,
+.breadcrumb-nav-container
 {
   text-transform: capitalize !important;
 }
