@@ -12,7 +12,9 @@ div[style*="font-size:130%"],
 [class*="menu__item"],
 [summary="Taxobox"],
 .tagline,
-.breadcrumb-nav-container
+.breadcrumb-nav-container,
+.wikitable,
+.infobox
 {
   text-transform: capitalize !important;
 }
