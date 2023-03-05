@@ -8,7 +8,8 @@ h6,
 [class*="Vorlage_Überschriftensimulation"],
 .mw-page-title-main,
 div[style*="font-size:130%"],
-.toc
+.toc,
+[class*="menu__item"]
 {
   text-transform: capitalize;
 }
@@ -17,7 +18,9 @@ HIDDEN-FORCED,
 [title="Google translate navigation"],
 div[class="eg-machine-translation-page-status missing"],
 .eg-machine-translation-banner,
-.banner-container
+.banner-container,
+.page-actions-menu,
+[summary="Taxobox"]
 {
    display: none !important;
    visibility: hidden !important;
@@ -33,4 +36,8 @@ BODY-FIX,
 body
 {
 margin-top: 0px !important;
+}
+
+.read-more-container{
+  min-height:0px !important;
 }
