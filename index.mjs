@@ -11,7 +11,7 @@ http.createServer(onRequest).listen(3000);
 
 async function onRequest(req, res) {
 
-  let path = req.url;
+  let path = req.url.replaceAll('*','');
 
   console.log(path);
 
@@ -75,7 +75,7 @@ async function onRequest(req, res) {
     /* if not a text response then redirect straight to target */
     res.setHeader('location', 'https://' + hostProxy + path.split('?')[0] + translator);
     res.statusCode = 302;
-    res.end();
+    return res.end();
 
   }
 

@@ -26,7 +26,8 @@ div[class="eg-machine-translation-page-status missing"],
 .eg-machine-translation-banner,
 .banner-container,
 .page-actions-menu,
-#goog-gt-
+#goog-gt-,
+.edit-page
 {
    display: none !important;
    visibility: hidden !important;
