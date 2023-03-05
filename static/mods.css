@@ -45,3 +45,7 @@ margin-top: 0px !important;
 .read-more-container{
   min-height:0px !important;
 }
+
+section{
+  display:block !important;
+}
