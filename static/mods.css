@@ -25,7 +25,8 @@ HIDDEN-FORCED,
 div[class="eg-machine-translation-page-status missing"],
 .eg-machine-translation-banner,
 .banner-container,
-.page-actions-menu
+.page-actions-menu,
+#goog-gt-
 {
    display: none !important;
    visibility: hidden !important;
