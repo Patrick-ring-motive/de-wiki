@@ -2,7 +2,8 @@ import fetch from 'node-fetch';
 import http from 'http';
 
 const hostProxy = 'de-wiki.weblet.repl.co';
-const hostTarget = 'de-m-wikipedia-org.translate.goog';
+const hostTarget = '1-de--wiki-webserve-workers-dev.translate.goog';
+const hostTranslate = 'de-m-wikipedia-org.translate.goog';
 const hostWiki = 'de.m.wikipedia.org';
 const translator = '?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp';
 
@@ -11,7 +12,7 @@ http.createServer(onRequest).listen(3000);
 
 async function onRequest(req, res) {
 
-  let path = req.url.replaceAll('*','');
+  let path = req.url.replaceAll('*', '');
 
   console.log(path);
 
@@ -52,17 +53,13 @@ async function onRequest(req, res) {
     /* finish copying over the other parts of the request */
 
     /* fetch from your desired target */
-    let response = new Response(); 
-      try{
-      response = await fetch('https://' + hostTarget + req.url, options);
-      }catch(e){
-      response = await fetch('https://' + hostWiki + req.url, options);
-      }
-    /* copy over response headers 
-
-    
-    */
-
+    let response = new Response();
+    try {
+      response = await fetch('https://' + hostTarget + path, options);
+    } catch (e) {
+      response = await fetch('https://' + hostWiki + path, options);
+    }
+    /* copy over response headers */
 
     res.headers = response.headers;
 
@@ -71,30 +68,32 @@ async function onRequest(req, res) {
 
     if ((ct) && (ct.indexOf('image') == -1) && (ct.indexOf('video') == -1) && (ct.indexOf('audio') == -1)) {
 
-        if (path.indexOf(translator) == -1) {
-    /* if not a text response then redirect straight to target */
-    res.setHeader('location', 'https://' + hostProxy + path.split('?')[0] + translator);
-    res.statusCode = 302;
-    return res.end();
+      if (path.indexOf(translator) == -1) {
+        /* if not a text response then redirect straight to target */
+        res.setHeader('location', 'https://' + hostProxy + path.split('?')[0] + translator);
+        res.statusCode = 302;
+        return res.end();
 
-  }
+      }
 
       /* Copy over target response and return */
       let resBody = await response.text();
+      if ((ct.indexOf('javascript') > -1)) {
+        resBody = resBody.replaceAll(hostWiki, hostProxy);
 
-      resBody = resBody.replaceAll('hostWiki', 'hostProxy');
+        resBody = resBody.replaceAll(hostTarget, hostProxy);
+      }
 
-      resBody = resBody.replaceAll('hostTarget', 'hostProxy');
 
-      resBody = resBody.replace('<head>','<head><script src="https://patrick-ring-motive.github.io/de-wiki/static/links.js"></script><link rel="stylesheet" href="https://patrick-ring-motive.github.io/de-wiki/static/mods.css">');
-      
+      resBody = resBody.replace('<head>', '<head><script src="https://patrick-ring-motive.github.io/de-wiki/static/links.js"></script><link rel="stylesheet" href="https://patrick-ring-motive.github.io/de-wiki/static/mods.css">');
+
       res.end(resBody);
 
 
     } else {
 
       /* if not a text response then redirect straight to target */
-      res.setHeader('location', 'https://' + hostTarget + req.url);
+      res.setHeader('location', 'https://' + hostTarget + path);
       res.statusCode = 302;
       res.end();
 
