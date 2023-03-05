@@ -1,4 +1,10 @@
 CAPITALIZER,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 [class*="Vorlage_Überschriftensimulation"],
 .mw-page-title-main,
 div[style*="font-size:130%"]
@@ -7,7 +13,9 @@ div[style*="font-size:130%"]
 }
 
 HIDDEN-FORCED,
-[title="Google translate navigation"]
+[title="Google translate navigation"],
+div[class="eg-machine-translation-page-status missing"],
+.eg-machine-translation-banner
 {
    display: none !important;
    visibility: hidden !important;
