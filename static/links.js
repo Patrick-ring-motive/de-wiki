@@ -1,6 +1,6 @@
 void async function links(){
 
-const hostProxy = 'de-wiki.oddjobhat.repl.co';
+const hostProxy = window.location.host;
 const hostTarget = 'de-m-wikipedia-org.translate.goog';
 const hostWiki = 'de.m.wikipedia.org';
 

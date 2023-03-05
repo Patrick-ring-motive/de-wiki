@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import http from 'http';
 
-const hostProxy = 'de-wiki.oddjobhat.repl.co';
+const hostProxy = 'de-wiki.weblet.repl.co';
 const hostTarget = 'de-m-wikipedia-org.translate.goog';
 const hostWiki = 'de.m.wikipedia.org';
 const translator = '?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp';
