@@ -6,15 +6,18 @@ const hostProxy = 'de-wiki.weblet.repl.co';
 const hostTarget = 'de-m-wikipedia-org.translate.goog';//'1-de--wiki-webserve-workers-dev.translate.goog';
 const hostTranslate = 'de-m-wikipedia-org.translate.goog';
 const hostWiki = 'de.m.wikipedia.org';
-const translator = '?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp';
+let translator = '?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp';
 
 
 http.createServer(onRequest).listen(3000);
 
 async function onRequest(req, res) {
 
-  let path = req.url.replaceAll('*', '');
-let pat=path.split('?')[0];
+let path = req.url.replaceAll('*', '');
+let pat = path.split('?')[0];
+if(path.indexOf('?')>-1){
+  translator=translator.replace('?','&');
+}
   //console.log(path);
 
   /*respond to ping from uptime robot*/
@@ -78,7 +81,7 @@ Allow: /`);
 
       if (path.indexOf(translator) == -1) {
         /* if not a text response then redirect straight to target */
-        res.setHeader('location', 'https://' + hostProxy + path.split('?')[0] + translator);
+        res.setHeader('location', 'https://' + hostProxy + path + translator);
         res.statusCode = 302;
         return res.end();
 
