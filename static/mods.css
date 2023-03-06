@@ -62,7 +62,8 @@ html,
 body,
 header,
 article,
-div
+div,
+*
 {
 
 background-color: #bedbed !important;
