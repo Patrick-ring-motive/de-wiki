@@ -56,3 +56,12 @@ margin-top: 0px !important;
 section.open-block{
  display:block !important;
 }
+
+DARK-MODE,
+body,
+img,
+svg,
+video
+{
+  filter:invert(1) hue-rotate(180deg);
+}
