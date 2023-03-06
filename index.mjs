@@ -17,7 +17,7 @@ async function onRequest(req, res) {
   let path = req.url.replaceAll('*', '');
   let pat = path.split('?')[0];
 
-  //console.log(path);
+  ////console.log(path);
 
   /*respond to ping from uptime robot*/
   if (path == '/ping') {
