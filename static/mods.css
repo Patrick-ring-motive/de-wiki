@@ -57,13 +57,10 @@ section.open-block{
  display:block !important;
 }
 
-DARK-MODE,
-body,
-img,
-svg,
-video,
-[style*="background-image:url"i],
-[style*="background:url"i]
+BLUEY,
+body
 {
-  filter:invert(1) hue-rotate(180deg);
+
+backgtound-color: #BEDBED;
+  
 }
