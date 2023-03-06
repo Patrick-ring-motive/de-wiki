@@ -65,7 +65,11 @@ article,
 div,
 main,
 app,
-table
+table,
+button,
+label,
+footer,
+input
 {
 
 background-color:#cce9ff !important;
