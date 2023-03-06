@@ -63,9 +63,18 @@ body,
 header,
 article,
 div,
-*
+main,
+app,
+table
 {
 
 background-color: #bedbed !important;
   
+}
+
+img,
+svg,
+[style*="background-image:url"i]
+{
+filter: invert(1) sepia(0.5) invert(1);
 }
