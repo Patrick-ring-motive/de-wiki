@@ -9,8 +9,8 @@ export default function transformBody(resBody, ct, hostWiki, hostTarget, hostPro
 
 
   resBody = resBody.replace('<head>', `<head modified><modified/>
-      <script src="https://patrick-ring-motive.github.io/de-wiki/static/links.js"></script>
-      <link rel="stylesheet" href="https://patrick-ring-motive.github.io/de-wiki/static/mods.css">`);
+      <script src="https://redirect-nodemjs.weblette.repl.co/de-wiki/static/links.js"></script>
+      <link rel="stylesheet" href="https://redirect-nodemjs.weblette.repl.co/de-wiki/static/mods.css">`);
 
 
   return resBody;
