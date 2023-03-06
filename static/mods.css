@@ -58,9 +58,11 @@ section.open-block{
 }
 
 BLUEY,
+html,
 body,
 header,
-article
+article,
+div
 {
 
 background-color: #BEDBED;
