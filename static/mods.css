@@ -61,7 +61,9 @@ DARK-MODE,
 body,
 img,
 svg,
-video
+video,
+[style*="background-image:url"i],
+[style*="background:url"i]
 {
   filter:invert(1) hue-rotate(180deg);
 }
