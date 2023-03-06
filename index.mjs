@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
 import http from 'http';
+import transformBody from './src/body-transform.mjs';
 
 const hostProxy = 'de-wiki.weblet.repl.co';
 const hostTarget = 'de-m-wikipedia-org.translate.goog';//'1-de--wiki-webserve-workers-dev.translate.goog';
@@ -13,15 +14,19 @@ http.createServer(onRequest).listen(3000);
 async function onRequest(req, res) {
 
   let path = req.url.replaceAll('*', '');
-
-  console.log(path);
+let pat=path.split('?')[0];
+  //console.log(path);
 
   /*respond to ping from uptime robot*/
   if (path == '/ping') {
     res.statusCode = 200;
     return res.end();
   }
-
+if (pat == '/robots.txt') {
+    res.statusCode = 200;
+    return res.end(`User-agent: *
+Allow: /`);
+  }
 
 
   req.headers.host = hostTarget;
@@ -81,16 +86,10 @@ async function onRequest(req, res) {
 
       /* Copy over target response and return */
       let resBody = await response.text();
-      if ((ct.indexOf('javascript') > -1)) {
-       resBody = resBody.replaceAll(hostWiki, hostProxy);
 
-        resBody = resBody.replaceAll(hostTarget, hostProxy);
-      }
+      
 
-
-      resBody = resBody.replace('<head>', '<head><script src="https://patrick-ring-motive.github.io/de-wiki/static/links.js"></script><link rel="stylesheet" href="https://patrick-ring-motive.github.io/de-wiki/static/mods.css">');
-
-      res.end(resBody);
+      res.end(transformBody(resBody,ct,hostWiki,hostTarget,hostProxy));
 
 
     } else {

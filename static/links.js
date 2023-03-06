@@ -31,7 +31,18 @@ void async function links() {
         src_list[i].src = src_list[i].src.replaceAll(hostTarget, hostProxy)
       } catch (e) { continue; }
     }
+const data_src_list = document.querySelectorAll(`
+[data-src*="`+ hostWiki + `"],
+[data-src*="`+ hostTarget + `"]
+`);
+    const data_src_list_length = data_src_list.length;
 
+    for (let i = 0; i < data_src_list_length; i++) {
+      try {
+        data_src_list[i].setAttribute('data-src', src_list[i].getAttribute('data-src').replaceAll(hostWiki, hostProxy).replaceAll(hostTarget,hostProxy));
+      
+      } catch (e) { continue; }
+    }
     const lazy_images = document.querySelectorAll('.lazy-image-placeholder[data-src]');
     const lazy_images_length = lazy_images.length;
     for (let i = 0; i < lazy_images_length; i++) {
