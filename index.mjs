@@ -70,7 +70,7 @@ Allow: /`);
     let ct = response.headers.get('content-type');
 
     if ((ct) && (ct.indexOf('image') == -1) && (ct.indexOf('video') == -1) && (ct.indexOf('audio') == -1)) {
-
+ 
       if (path.indexOf(translator) == -1) {
         /* if not a text response then redirect straight to target */
         if (path.indexOf('?') > -1) {
