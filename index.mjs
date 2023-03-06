@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 import http from 'http';
 import transformBody from './src/body-transform.mjs';
+import handleRequest from './src/handle-request.mjs';
 
 const hostProxy = 'de-wiki.weblet.repl.co';
 const hostTarget = 'de-m-wikipedia-org.translate.goog';//'1-de--wiki-webserve-workers-dev.translate.goog';
@@ -13,11 +14,9 @@ http.createServer(onRequest).listen(3000);
 
 async function onRequest(req, res) {
 
-let path = req.url.replaceAll('*', '');
-let pat = path.split('?')[0];
-if(path.indexOf('?')>-1){
-  translator=translator.replace('?','&');
-}
+  let path = req.url.replaceAll('*', '');
+  let pat = path.split('?')[0];
+
   //console.log(path);
 
   /*respond to ping from uptime robot*/
@@ -25,25 +24,18 @@ if(path.indexOf('?')>-1){
     res.statusCode = 200;
     return res.end();
   }
-if (pat == '/robots.txt') {
+
+  if (pat == '/robots.txt') {
     res.statusCode = 200;
-    return res.end(`User-agent: *
+    return res.end(
+      `User-agent: *
 Allow: /`);
+
   }
 
 
-  req.headers.host = hostTarget;
-  req.headers.referer = hostTarget;
+  handleRequest(req, hostTarget, async function() {
 
-
-
-  /* start reading the body of the request*/
-  let bdy = "";
-  req.on('readable', function() {
-    bdy += req.read();
-  });
-  req.on('end', async function() {
-    /* finish reading the body of the request*/
 
     /* start copying over the other parts of the request */
     let options = {
@@ -64,11 +56,11 @@ Allow: /`);
     let response = new Response();
     try {
       response = await fetch('https://' + hostTarget + path, options);
-   
+
     } catch (e) {
-      
-        response = await fetch('https://' + hostWiki + path, options);
-      
+
+      response = await fetch('https://' + hostWiki + path, options);
+
     }
     /* copy over response headers */
 
@@ -81,6 +73,11 @@ Allow: /`);
 
       if (path.indexOf(translator) == -1) {
         /* if not a text response then redirect straight to target */
+        if (path.indexOf('?') > -1) {
+          translator = '?' + translator;
+        } else {
+          translator = '&' + translator;
+        }
         res.setHeader('location', 'https://' + hostProxy + path + translator);
         res.statusCode = 302;
         return res.end();
@@ -91,8 +88,8 @@ Allow: /`);
       let resBody = await response.text();
 
 
-      
-      res.end(transformBody(resBody,ct,hostWiki,hostTarget,hostProxy));
+
+      res.end(transformBody(resBody, ct, hostWiki, hostTarget, hostProxy));
 
 
     } else {
@@ -103,6 +100,7 @@ Allow: /`);
       res.end();
 
     }
+
   });
 
 
