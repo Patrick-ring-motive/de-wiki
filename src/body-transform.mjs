@@ -8,7 +8,7 @@ export default function transformBody(resBody, ct, hostWiki, hostTarget, hostPro
   }
 
 
-  resBody = resBody.replace('<head>', `<head modified><modified/>
+  resBody = resBody.replace('<head>', `<head modified>
       <script src="https://redirect-nodemjs.weblette.repl.co/de-wiki/static/links.js"></script>
       <link rel="stylesheet" href="https://redirect-nodemjs.weblette.repl.co/de-wiki/static/mods.css">`);
 

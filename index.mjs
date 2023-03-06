@@ -7,17 +7,17 @@ const hostProxy = 'de-wiki.weblet.repl.co';
 const hostTarget = 'de-m-wikipedia-org.translate.goog';//'1-de--wiki-webserve-workers-dev.translate.goog';
 const hostTranslate = 'de-m-wikipedia-org.translate.goog';
 const hostWiki = 'de.m.wikipedia.org';
-let translator = '_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp';
+
 
 
 http.createServer(onRequest).listen(3000);
 
 async function onRequest(req, res) {
-
+  let translator = '_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp';
   let path = req.url.replaceAll('*', '');
   let pat = path.split('?')[0];
 
-  ////console.log(path);
+  console.log(path);
 
   /*respond to ping from uptime robot*/
   if (path == '/ping') {
@@ -40,7 +40,7 @@ Allow: /`);
   req.on('readable', function() {
     bdy += req.read();
   });
-  
+
   req.on('end', async function() {
 
 
@@ -77,7 +77,7 @@ Allow: /`);
     let ct = response.headers.get('content-type');
 
     if ((ct) && (ct.indexOf('image') == -1) && (ct.indexOf('video') == -1) && (ct.indexOf('audio') == -1)) {
- 
+
       if (path.indexOf(translator) == -1) {
         /* if not a text response then redirect straight to target */
         if (path.indexOf('?') == -1) {
