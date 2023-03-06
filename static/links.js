@@ -1,7 +1,7 @@
 void async function links() {
 
   const hostProxy = window.location.host;
-  const hostTarget = '1-de--wiki-webserve-workers-dev.translate.goog';
+  const hostTarget = 'de-m-wikipedia-org.translate.goog';
   const hostWiki = 'de.m.wikipedia.org';
 
   setInterval(async function() {

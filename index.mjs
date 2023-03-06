@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import http from 'http';
 
 const hostProxy = 'de-wiki.weblet.repl.co';
-const hostTarget = '1-de--wiki-webserve-workers-dev.translate.goog';
+const hostTarget = 'de-m-wikipedia-org.translate.goog';//'1-de--wiki-webserve-workers-dev.translate.goog';
 const hostTranslate = 'de-m-wikipedia-org.translate.goog';
 const hostWiki = 'de.m.wikipedia.org';
 const translator = '?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp';
@@ -56,8 +56,11 @@ async function onRequest(req, res) {
     let response = new Response();
     try {
       response = await fetch('https://' + hostTarget + path, options);
+   
     } catch (e) {
-      response = await fetch('https://' + hostWiki + path, options);
+      
+        response = await fetch('https://' + hostWiki + path, options);
+      
     }
     /* copy over response headers */
 
@@ -79,7 +82,7 @@ async function onRequest(req, res) {
       /* Copy over target response and return */
       let resBody = await response.text();
       if ((ct.indexOf('javascript') > -1)) {
-        resBody = resBody.replaceAll(hostWiki, hostProxy);
+       resBody = resBody.replaceAll(hostWiki, hostProxy);
 
         resBody = resBody.replaceAll(hostTarget, hostProxy);
       }
