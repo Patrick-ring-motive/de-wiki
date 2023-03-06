@@ -1,13 +1,13 @@
 import fetch from 'node-fetch';
 import http from 'http';
 import transformBody from './src/body-transform.mjs';
-import handleRequest from './src/handle-request.mjs';
+
 
 const hostProxy = 'de-wiki.weblet.repl.co';
 const hostTarget = 'de-m-wikipedia-org.translate.goog';//'1-de--wiki-webserve-workers-dev.translate.goog';
 const hostTranslate = 'de-m-wikipedia-org.translate.goog';
 const hostWiki = 'de.m.wikipedia.org';
-let translator = '?_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp';
+let translator = '_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp';
 
 
 http.createServer(onRequest).listen(3000);
@@ -33,8 +33,15 @@ Allow: /`);
 
   }
 
-
-  handleRequest(req, hostTarget, async function() {
+  req.headers.host = hostTarget;
+  req.headers.referer = hostTarget;
+  /* start reading the body of the request*/
+  let bdy = "";
+  req.on('readable', function() {
+    bdy += req.read();
+  });
+  
+  req.on('end', async function() {
 
 
     /* start copying over the other parts of the request */
@@ -73,7 +80,7 @@ Allow: /`);
  
       if (path.indexOf(translator) == -1) {
         /* if not a text response then redirect straight to target */
-        if (path.indexOf('?') > -1) {
+        if (path.indexOf('?') == -1) {
           translator = '?' + translator;
         } else {
           translator = '&' + translator;
