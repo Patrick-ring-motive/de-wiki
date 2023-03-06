@@ -90,8 +90,8 @@ Allow: /`);
       /* Copy over target response and return */
       let resBody = await response.text();
 
-      
 
+      
       res.end(transformBody(resBody,ct,hostWiki,hostTarget,hostProxy));
 
 
