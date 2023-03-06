@@ -69,7 +69,11 @@ table,
 button,
 label,
 footer,
-input
+input,
+th,
+a,
+font,
+.last-modified-bar
 {
 
 background-color:#cce9ff !important;
