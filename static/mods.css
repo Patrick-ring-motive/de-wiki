@@ -64,7 +64,8 @@ html,
 body,
 header,
 article,
-div,
+div:not([style^="position:absolute;"]"),
+div:not([style^="position:relative;z-index:100;"]"),
 main,
 app,
 table,
@@ -78,9 +79,9 @@ background-color:#cce9ff !important;
   
 }
 
-img,
-svg,
-[style*="background-image:url"i]
+--img--,
+--svg--,
+--[style*="background-image:url"i]--
 {
 filter: invert(1) sepia(0.5) invert(1);
 }
