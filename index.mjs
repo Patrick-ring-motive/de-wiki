@@ -15,9 +15,9 @@ http.createServer(onRequest).listen(3000);
 async function onRequest(req, res) {
   let translator = '_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp';
   let path = req.url.replaceAll('*', '');
-  let pat = path.split('?')[0];
+  let pat = path.split('?')[0].split('#')[0];
 
-  console.log(path);
+  //console.log(path);
 
   /*respond to ping from uptime robot*/
   if (path == '/ping') {
@@ -86,7 +86,7 @@ Allow: /`);
           translator = '&' + translator;
         }
         res.setHeader('location', 'https://' + hostProxy + path + translator);
-        res.statusCode = 302;
+        res.statusCode = 301;
         return res.end();
 
       }
@@ -103,7 +103,7 @@ Allow: /`);
 
       /* if not a text response then redirect straight to target */
       res.setHeader('location', 'https://' + hostTarget + path);
-      res.statusCode = 302;
+      res.statusCode = 301;
       res.end();
 
     }
