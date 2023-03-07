@@ -78,10 +78,3 @@ footer,
 background-color:#cce9ff !important;
   
 }
-
---img--,
---svg--,
---[style*="background-image:url"i]--
-{
-filter: invert(1) sepia(0.5) invert(1);
-}
