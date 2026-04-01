@@ -18,8 +18,7 @@ div[style*="font-size:130%"],
 .tagline,
 .breadcrumb-nav-container,
 .wikitable,
-.infobox
-{
+.infobox {
   text-transform: capitalize !important;
 }
 
@@ -33,30 +32,28 @@ div[class="eg-machine-translation-page-status missing"],
 .page-actions-menu,
 #goog-gt-,
 #logo,
-.edit-page
-{
-   display: none !important;
-   visibility: hidden !important;
-   opacity: 0 !important;
-   max-height: 0px !important;
-   height: 0px !important;
-   transform: scale(0,0) !important;
-   position: absolute !important;
-   z-index: -99 !important;
+.edit-page {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  max-height: 0px !important;
+  height: 0px !important;
+  transform: scale(0, 0) !important;
+  position: absolute !important;
+  z-index: -99 !important;
 }
 
 BODY-FIX,
-body
-{
-margin-top: 0px !important;
+body {
+  margin-top: 0px !important;
 }
 
-.read-more-container{
-  min-height:0px !important;
+.read-more-container {
+  min-height: 0px !important;
 }
 
-section.open-block{
- display:block !important;
+section.open-block {
+  display: block !important;
 }
 
 BLUEY,
@@ -64,7 +61,7 @@ html,
 body,
 header,
 article,
-div:not([style^="position:absolute;"],[style^="position:relative;z-index:100;"]),
+div:not([style^="position:absolute;"], [style^="position:relative;z-index:100;"]),
 div.noprint,
 span.mw-tmh-play-icon,
 main,
@@ -76,9 +73,8 @@ li[class],
 table[class],
 table[bgcolor="#ffffff"],
 .breadcrumb-nav-container,
-.last-modified-bar
-{
+.last-modified-bar {
 
-background-color:#cce9ff !important;
-  
+  background-color: #cce9ff !important;
+
 }
