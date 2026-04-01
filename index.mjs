@@ -2,13 +2,10 @@ import fetch from 'node-fetch';
 import http from 'http';
 import transformBody from './src/body-transform.mjs';
 
-
 const hostProxy = 'de-wiki.weblet.repl.co';
-const hostTarget = 'de-m-wikipedia-org.translate.goog';//'1-de--wiki-webserve-workers-dev.translate.goog';
+const hostTarget = 'de-m-wikipedia-org.translate.goog'; //'1-de--wiki-webserve-workers-dev.translate.goog';
 const hostTranslate = 'de-m-wikipedia-org.translate.goog';
 const hostWiki = 'de.m.wikipedia.org';
-
-
 
 http.createServer(onRequest).listen(3000);
 
@@ -42,7 +39,6 @@ Allow: /`);
   });
 
   req.on('end', async function() {
-
 
     /* start copying over the other parts of the request */
     let options = {
@@ -94,10 +90,7 @@ Allow: /`);
       /* Copy over target response and return */
       let resBody = await response.text();
 
-
-
       res.end(transformBody(resBody, ct, hostWiki, hostTarget, hostProxy));
-
 
     } else {
 
@@ -109,6 +102,5 @@ Allow: /`);
     }
 
   });
-
 
 }
